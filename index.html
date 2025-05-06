@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicle Counter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<body>
+
+<div class="container">
+    <!-- New Timestamp Display -->
+    <div id="timestamp-display">
+        <p><strong>Tanggal & Waktu:</strong> <span id="current-timestamp">--/--/---- --:--:--</span></p>
+    </div>
+
+    <div style="display: none;">
+        <span id="elapsed-time">00:00:00</span>
+    </div>
+
+    <!--Timer
+    <div id="timer-section">
+        <p><strong>Time Counting:</strong> <span id="elapsed-time">00:00:00</span></p>
+        <button onclick="startTimer()">Start</button>
+        <button onclick="stopTimer()">Stop</button>
+    </div>
+    -->
+
+    <h1>Vehicle Counter</h1>
+
+    <div class="form-group">
+        <label for="road"><strong>Jalan:</strong></label>
+        <input type="text" id="road" placeholder="Masukkan Nama Jalan" oninput="updateRoad()" />
+    </div>
+
+    <div class="counter-section">
+        <div class="vehicle">
+            <div class="vehicle-name">Cars</div>
+            <div class="vehicle-count" id="car">0</div>
+            <div class="vehicle-buttons">
+                <button onclick="decrement('car')">-</button>
+                <button onclick="increment('car')">+</button>
+            </div>
+        </div>
+    
+        <div class="vehicle">
+            <div class="vehicle-name">Bikes</div>
+            <div class="vehicle-count" id="bike">0</div>
+            <div class="vehicle-buttons">
+                <button onclick="decrement('bike')">-</button>
+                <button onclick="increment('bike')">+</button>
+            </div>
+        </div>
+    
+        <div class="vehicle">
+            <div class="vehicle-name">Trucks</div>
+            <div class="vehicle-count" id="truck">0</div>
+            <div class="vehicle-buttons">
+                <button onclick="decrement('truck')">-</button>
+                <button onclick="increment('truck')">+</button>
+            </div>
+        </div>
+    
+        <div class="vehicle">
+            <div class="vehicle-name">Buses</div>
+            <div class="vehicle-count" id="bus">0</div>
+            <div class="vehicle-buttons">
+                <button onclick="decrement('bus')">-</button>
+                <button onclick="increment('bus')">+</button>
+            </div>
+        </div>
+    </div>
+
+    <button onclick="saveCount()">Stop Time and Save Entry</button>
+    <button onclick="resetCounters()">Reset Counters</button>
+    <button onclick="resetTable()">Reset Table</button>
+    <button onclick="resetChart()">Reset Chart</button>
+
+    <h2 id="recap-header">Rekap Jalan: -</h2>
+    <table id="recap-table">
+        <thead>
+            <tr>
+                <th>Date/Time</th>
+                <th>Time Spent</th>
+                <th>Cars</th>
+                <th>Bikes</th>
+                <th>Trucks</th>
+                <th>Buses</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Saved entries will appear here -->
+        </tbody>
+    </table>
+
+    <h2>Jumlah Kendaraan</h2>
+    <canvas id="liveChart" width="400" height="200"></canvas>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
